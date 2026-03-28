@@ -8,7 +8,7 @@ on:
 
 jobs:
   mirror:
-    if: github.repository == 'shrujan0/termsearch'
+    if: github.repository == 'shrujan0/baremetal-programming'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout (full history)
