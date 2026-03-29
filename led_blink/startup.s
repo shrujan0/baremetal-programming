@@ -12,25 +12,31 @@
 .type Reset_Handler, %function
 
 Reset_Handler:
-	ldr r0, =_estack 
+	/* set stack pointer to _estack */
+	ldr r0, =_estack
 	mov sp, r0
 
+	/* initialise registers with memory address */
 	ldr r0, =_sdata
 	ldr r1, =_edata
 	ldr r2, =_sidata
+	/* offset from _sidata and _sdata */
 	movs r3, #0
 	b LoopCopyDataInit
 
+/* copy one word from flash to RAM using offset r3 */
 CopyDataInit:
 	ldr r4, [r2, r3]
 	str r4, [r0, r3]
 	adds r3, r3, #4
 
+/* Loop to copy .data to RAM from flash*/
 LoopCopyDataInit:
 	adds r4, r0, r3
 	cmp r4, r1
 	bcc CopyDataInit
 
+	/* initialise registers with location for uninitialsed data section*/
 	ldr r0, =_sbss
 	ldr r1, =_ebss
 	movs r3, #0
@@ -40,12 +46,13 @@ FillZerobss:
 	str r3, [r0]
 	adds r0, r0, #4
 
+/* Loop to initialise with zero, .bss section */
 LoopFillZerobss:
 	cmp r0, r1
 	bcc FillZerobss
 
 	bl main
-
+/* if main returns loop here */
 LoopForever:
 	b LoopForever
 

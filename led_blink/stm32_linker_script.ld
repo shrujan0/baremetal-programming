@@ -1,4 +1,6 @@
-ENTRY(reset_handler)
+/* for stm32f411 */
+
+ENTRY(Reset_Handler)
 
 /* stack starting address, this is equal to end of the RAM memory (0x20000000 + 64K) */
 _estack = ORIGIN(RAM) + LENGTH(RAM);
