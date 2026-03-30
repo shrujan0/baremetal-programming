@@ -1,7 +1,7 @@
 /* minimal header, only necessary code for this program, selected from stm32cube generated headers */
 
-#ifndef __STM32F411_GPIO_H
-#define __STM32F411_GPIO_H
+#ifndef __STM32F401_GPIO_H
+#define __STM32F401_GPIO_H
 
 #include <stdint.h>
 

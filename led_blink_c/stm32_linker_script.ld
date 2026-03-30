@@ -1,4 +1,4 @@
-/* for stm32f411 */
+/* for stm32f401 */
 
 ENTRY(Reset_Handler)
 
