@@ -28,7 +28,7 @@ Reset_Handler:
     ldr r0, =0x40020814 /* GPIOC->ODR address (output data register) */
 
 Loop:
-    /* set 13 high, led on */
+    /* set 13 high, led off */
     ldr r1, [r0]
     orr r1, r1, #(1 << 13)
     str r1, [r0]
@@ -39,7 +39,7 @@ Delay1:
     subs r2, r2, #1
     bne Delay1
 
-    /*set 13 low, led off */
+    /* set 13 low, led on */
     ldr r1, [r0]
     bic r1, r1, #(1 << 13)
     str r1, [r0]

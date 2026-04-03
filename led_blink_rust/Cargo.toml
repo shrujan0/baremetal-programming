@@ -1,0 +1,17 @@
+[package]
+name = "led_blink_rust"
+version = "0.1.0"
+edition = "2024"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+# to remove the warning as test crate is not there in no-std program
+[[bin]]
+name = "led_blink_rust"
+harness = false
+
+

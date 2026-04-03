@@ -4,7 +4,7 @@
 #define LED_PIN (1U << 13)
 
 void led_init(void) {
-    //
+    //enable clock for GPIOC
     RCC->AHB1ENR |= GPIOCEN;
 
     //Set led pin as output
@@ -12,12 +12,13 @@ void led_init(void) {
     GPIOC->MODER &= ~(1U << 27);
 }
 
-void led_on(void) {
+void led_off(void) {
     //set led pin HIGH (PC13)
+    //setting high turnes led off in my board
     GPIOC->ODR |= LED_PIN;
 }
 
-void led_off(void) {
+void led_on(void) {
     //set led pin low (PC13)
     GPIOC->ODR &= ~LED_PIN;
 }
